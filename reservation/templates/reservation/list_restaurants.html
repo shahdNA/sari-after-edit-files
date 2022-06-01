@@ -1,0 +1,34 @@
+{% extends 'reservation/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>
+        <a href="{% url 'restaurants-search'  %}" target="_blank">Search</a>
+    </h2>
+    <a href="{% url 'restaurant-create'  %}" target="_blank">+ Create</a>
+ <table border="1" cellpadding="10" cellspacing="1" class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        {% for restaurant in restaurants %}
+        <tr>
+            <td>{{ restaurant.name }}</td>
+            <td><a href="{% url 'city_restaurants' restaurant.city.pk %}" target="_blank">{{ restaurant.city }} </a>
+            </td>
+            <td>{{ restaurant.address }}</td>
+            <td>
+                <a href="{% url 'restaurant-details' restaurant.pk %}" target="_blank">Details</a>
+                <a href="{% url 'restaurant-edit' restaurant.pk %}" target="_blank">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% load static %}
+{% include 'reservation/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>countries</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+</head>
+<body>
+{% for city in cities %}
+    {{ city.name }}
+    {% for rest in city.restaurants.all %}
+        {{ rest.name }}<br>
+    {% endfor %}
+<br>
+{% endfor %}
+</body>
+</html>
